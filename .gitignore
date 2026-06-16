@@ -1,17 +1,12 @@
+# Toolchains - never commit binaries
 bin/
-hashcat/hashcat-7.1.2/OpenCL/
-hashcat/hashcat-7.1.2/rules/
-hashcat/hashcat-7.1.2/masks/
-hashcat/hashcat-7.1.2/charsets/
-hashcat/hashcat-7.1.2/Python/
-hashcat/hashcat-7.1.2/Rust/
-hashcat/hashcat-7.1.2/bridges/
-hashcat/hashcat-7.1.2/tunings/
-hashcat/hashcat-7.1.2/modules/
-hashcat/hashcat-7.1.2/layouts/
-hashcat/hashcat-7.1.2/extra/
 git/
 hcxtools/
+hashcat/
+PortableGit.zip
+hashcat-7.1.2.7z
+
+# Runtime artifacts
 wordlists/rockyou.txt
 caps/
 hashes/
@@ -20,3 +15,6 @@ out/
 logs/
 *.log
 *.potfile
+*.22000
+*.pcap
+*.pcapng

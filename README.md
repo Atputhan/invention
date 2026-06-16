@@ -1,6 +1,28 @@
 # invention
 
-GHOST - WiFi Handshake Cracking Toolkit
+GHOST - WiFi Handshake Cracking Toolkit + Cardputer ADV field kit
+
+## Trip-ready. 2-week self-contained workflow.
+
+Everything in this repo is cross-platform Python or shell scripts. Mac clone + brew and you're running.
+
+```
+invention/
+  bin/                  hashcat + git + helper launchers
+  hashcat/hashcat-7.1.2/  full Win64 hashcat tree
+  scripts/              pcapng_to_22000.py, hotel_wardict.py,
+                        pcapng_split.py, wpa_summarize.py,
+                        beacon_audit.py, crack.sh
+  cheatsheets/          tshark-filters.md, hashcat-22000.md,
+                        cardputer-adv-firmwares.md,
+                        porkchop-to-hashcat.md
+  docs/                 CHECKLIST.md (pre-trip), LOGBOOK.md (daily)
+  caps/                 drop Cardputer porkchop .pcapng here
+  hashes/               converted .22000 handshakes
+  potfile/              hashcat recovered passwords
+  out/                  cracked results
+  logs/                 session logs
+```
 
 Authorized WPA/WPA2-PSK recovery pipeline. Cardputer ADV porkchop captures
 through hashcat on the host GPU. **Only run on networks you own or have
@@ -84,4 +106,15 @@ brew install hashcat john
 WPA password recovery on networks you do not own or have written
 authorization to test is a crime in most jurisdictions. The author
 assumes no liability for misuse.
+
+## Trip workflow (Cardputer ADV + Mac)
+
+1. **Day prep:** see `docs/CHECKLIST.md`
+2. **Capture:** run Marauder/Bruce/Porkchop on device, SD stores `.pcapng`
+3. **Pull:** swap SD to Mac, `cp /Volumes/SD/cap.pcapng caps/`
+4. **Convert:** `scripts/pcap2hash.sh caps/cap.pcapng`
+5. **Crack:** `scripts/crack.sh caps/cap.22000 wordlists/hotel.txt`
+6. **Summarize:** `python scripts/wpa_summarize.py caps/cap.22000`
+7. **Log:** append row to `docs/LOGBOOK.md`
+8. **Sync:** `git commit -am "day N" && git push`
 >>>>>>> 7d96bab (init: GHOST WiFi handshake cracking toolkit)
